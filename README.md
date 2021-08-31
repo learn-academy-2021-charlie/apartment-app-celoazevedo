@@ -93,6 +93,7 @@
         sign_out_route: destroy_user_session_path
         } %>
     ```
+    - Up here the keys that we are passing are the aliases routes. Now we can access the keys in the React side of the app.
 
     ### Set up Routes and Constrains
     - to clearly separate Rails routing responsabilities
@@ -107,8 +108,37 @@
     end
     ```
 
-    
+    ### Create directories inside app/javascript/components
+    - assets, components, pages
 
+    ### Login/Logout
+    - when the user navigates, it uses a token given by Devise. When the user logs out, the token needs to be destroyed. Out of the box Devise uses a delete action. We will config so it does on a GET request.
+    - config so Devise listen for logout requests vie GET
+    - in config/initializers/devise.rb
+    ```
+    # Find this line:
+    config.sign_out_via = :delete
+    # and replace it with this:
+    config.sign_out_via = :get
+    ```
+    - use conditional rendering to display the appropriate link depending on if the user is logged in or logged out.
+    - in app/javascript/components/App.js
+    
+    ### Lets Set up our React Router
+    - react router dom will give us the ability to navigate between pages.
+    - $ yarn add react-router-dom
+    - in src/App.js
+    ```
+    import {
+        BrowserRouter as Router,
+        Route,
+        Switch
+    } from 'react-router-dom'
+    ```
+
+    ### Create Header Component
+    - in app/javascript/components/components
+    - 
 
 
 
