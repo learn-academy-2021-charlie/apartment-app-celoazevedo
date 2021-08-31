@@ -44,7 +44,12 @@
     - $ rails db:migrate
 
     ### Create Association between Apartment and User
-    
+    - app/models/apartment.rb
+    ```
+    class Apartment < ApplicationRecord
+        belongs_to :user
+    end
+    ```
 
 
 
