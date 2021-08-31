@@ -50,7 +50,26 @@
         belongs_to :user
     end
     ```
+    - app/models/user.rb
+    ```
+    class User < ApplicationRecord
+        # Include default devise modules. Others available are:
+        # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+        devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+        has_many :apartments
+    end
+    ```
 
+    ### Now lets check if we can create a apartment for the User that we have (when we signed up earlier...)
+    - $ rails c
+    - $ test_user = User.where(email: 'test@gmail.com').first
+    - test_user.apartments.create street: '123 street',  .....
+    - check if it was successfully created!!!
+
+    ### Create seed file with data for User and Apartment
+    - app/db/seed.rb
+    - in seed file we created 2 apartments for the user with email: 'test2@gmail.com'
 
 
 
