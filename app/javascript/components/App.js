@@ -1,15 +1,44 @@
 import React, { Component } from "react"
-import PropTypes from "prop-types"
+// not sure what this import is for
+// import PropTypes from "prop-types"
 import {
   BrowserRouter as  Router,
   Route,
   Switch
 } from "react-router-dom"
+
 import Header from "./components/Header"
 import ApartmentIndex from "./pages/ApartmentIndex"
 import Home from "./pages/Home"
 
 class App extends Component {
+  // create constructor and state object
+  constructor(props){
+    super(props)
+    this.state = {
+      apartments: []
+    }
+  }
+
+  // render index with updated apartments array
+  componentDidMount(){
+    this.apartmentIndex()
+  }
+
+  // create index fetch functionality
+  apartmentIndex = () => {
+    fetch("http://localhost:3000/apartments")
+    .then(response => {
+      return response.json()
+    })
+    .then(apartmentsArray => {
+      this.setState({ apartments: apartmentsArray })
+    })
+    .catch(errors => {
+      console.log("apartmentIndex errors:", errors)
+    })
+  }
+
   render() {
     
     // destructure props 
@@ -30,7 +59,7 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/apartmentIndex" component={ApartmentIndex}/>
+          <Route path="/apartmentIndex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> }  />
         </Switch>
       </Router>
     )

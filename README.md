@@ -187,9 +187,12 @@
     config.sign_out_via = :get
     ```
     - NOW signout is working!
+
+## Add functionalities for Read Index
+    - branch: apartment-index
+        - now we can see a list of all of the apartments and its info in apartmentsIndex page
+        - http://localhost:3000/apartmentIndex
     
-
-
 
 ## Lets review the User stories!!!
 
@@ -201,7 +204,7 @@
     - Devise, navigation from Header component
         X  Story: As a logged in user, I should be able to log out
     - Devise, navigation from Header component
-        Story: As an un-registered guest on the website, I can see a header element at the top of each page containing navigation to the other pages
+        X Story: As an un-registered guest on the website, I can see a header element at the top of each page containing navigation to the other pages
     
     ### Header component
         Process:
@@ -223,18 +226,18 @@
         }
         ```
     
-    ###### TODO: More styling on the header
-    
+    ###### TODO: Styling on the header, appartmentIndex
     
     # Read
     Story: As an un-registered guest on the website, I can go to a web page and see a list of available apartments. Apartments have: a street designation, a city, state, a manager's name, manager's contact email, monthly rental price, bedrooms, bathrooms, and whether they allow pets
     
-    # Index
-    Have an index page but nothing on it yet
-    Story: As an un-registered guest on the website, I can click on an apartment to view its details
-    
-    # Show
-    Create
+        # Index
+        Have an index page but nothing on it yet
+        Story: As an un-registered guest on the website, I can click on an apartment to view its details
+        
+        # Show
+        
+    # Create
     Story: As a logged in user, I can go to a new apartment page with a form and create a new apartment
     Create, only if you are logged_in, Desive
     
@@ -243,12 +246,24 @@
     Edit, only apartments with the foreign key of the current user
 
 
-    
+## Message from Sarah on Testing Images!
+Sarah  2:13 PM
+If you have images in your app you will need to mock them. In package.json add this to the previous code snippet:
+  "jest": {
+    "roots": [
+      "app/javascript/components"
+    ],
+  "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>app/javascript/components/fileMock.js",
+      "\\.(css|less)$": "<rootDir>app/javascript/components/fileMock.js"
+    }
+  }
 
-
-
-
-
+Then you can create a fileMock in the same level as App.js called fileMock.js
+Add this code snippet to replace the image in the tests.
+let mockPic = "this is mock pic"
+export default mockPic
+######
 
 
 
