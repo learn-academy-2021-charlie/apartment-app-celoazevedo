@@ -71,6 +71,103 @@
     - app/db/seed.rb
     - in seed file we created 2 apartments for the user with email: 'test2@gmail.com'
 
+## Add REACT!
+- branch: add-react
+    - $ bundle add react-rails
+    - $ rails webpacker:install
+    - $ rails webpacker:install:react
+    - $ rails generate react:install
+    - $ rails generate react:component App
+        - bring in the Parent Component
+    - $ rails generate controller Home
+        - to hookup App.js so it can be rendered in the view
+
+    ### Set up component view
+    - in app/views/home/index.html.erb
+    ```
+        <%= react_component "App", {
+        logged_in: user_signed_in?,
+        current_user: current_user,
+        new_user_route: new_user_registration_path,
+        sign_in_route: new_user_session_path,
+        sign_out_route: destroy_user_session_path
+        } %>
+    ```
+    - Up here the keys that we are passing are the aliases routes. Now we can access the keys in the React side of the app.
+
+    ### Set up Routes and Constrains
+    - to clearly separate Rails routing responsabilities
+    - to direct html traffic to the 'home#index' route 
+    - in config/routes.rb
+    ```
+    Rails.application.routes.draw do
+        resources :apartments
+        devise_for :users
+        get '*path', to: 'home#index', constraints: ->(request){ request.format.html? }
+        root 'home#index'
+    end
+    ```
+
+    ### Create directories inside app/javascript/components
+    - assets, components, pages
+
+    ### Login/Logout
+    - when the user navigates, it uses a token given by Devise. When the user logs out, the token needs to be destroyed. Out of the box Devise uses a delete action. We will config so it does on a GET request.
+    - config so Devise listen for logout requests vie GET
+    - in config/initializers/devise.rb
+    ```
+    # Find this line:
+    config.sign_out_via = :delete
+    # and replace it with this:
+    config.sign_out_via = :get
+    ```
+    - use conditional rendering to display the appropriate link depending on if the user is logged in or logged out.
+    - in app/javascript/components/App.js
+    
+    ### Lets Set up our React Router
+    - react router dom will give us the ability to navigate between pages.
+    - $ yarn add react-router-dom
+    - in src/App.js
+    ```
+    import {
+        BrowserRouter as Router,
+        Route,
+        Switch
+    } from 'react-router-dom'
+    ```
+
+    ### Remeber to Add Reactstrap
+    - in app/assets/stylesheets
+    - rename application.css to application.scss
+    - $ bundle add bootstrap
+    - $ yarn add reactstrap
+    - import to application.scss
+        - @import 'bootstrap'
+
+    ### Create Header Component
+    - in app/javascript/components/components
+    - create test file for header component
+
+    ## Add Enzyme
+    - $ yarn add -D enzyme react-test-renderer enzyme-adapter-react-16
+    - $ yarn jest
+    - - in order for Enzyme to work in this app we need to tell it to work only in .js files.
+        - so we need to pass in some code to the package.json to specify where it will run.
+        ```
+        "jest": {
+            "roots": [
+                "app/javascript/components"
+            ]
+        }
+        ```
+    
+    
+
+
+
+    
+
+
 
 
 
