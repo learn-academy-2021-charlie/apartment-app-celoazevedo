@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
 import {
   BrowserRouter as  Router,
@@ -7,10 +7,9 @@ import {
 } from "react-router-dom"
 import Header from "./components/Header"
 
-
-class App extends React.Component {
+class App extends Component {
   render() {
-
+    
     // destructure props 
     const {
       logged_in,
@@ -22,19 +21,11 @@ class App extends React.Component {
 
 
     return (
-      <React.Fragment>
-        <Header />
-        { logged_in &&
-          <div>
-            <a href={sign_out_route }>Sign Out</a>
-          </div>
-        }
-        { !logged_in &&
-          <div>
-            <a href={ sign_in_route }>Sign In</a>
-          </div>
-        }
-      </React.Fragment>
+      <>
+        <Header logged_in={logged_in}
+          sign_in_route={sign_in_route}
+          sign_out_route={sign_out_route}/>
+      </>
     )
   }
 }

@@ -136,9 +136,25 @@
     } from 'react-router-dom'
     ```
 
+    ### Remeber to Add Reactstrap
+    - in app/assets/stylesheets
+    - rename application.css to application.scss
+    - $ bundle add bootstrap
+    - $ yarn add reactstrap
+    - import to application.scss
+        - @import 'bootstrap'
+
     ### Create Header Component
     - in app/javascript/components/components
     - 
+
+
+
+    
+
+
+
+
 
 
 
