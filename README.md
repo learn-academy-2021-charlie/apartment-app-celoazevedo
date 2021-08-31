@@ -146,7 +146,20 @@
 
     ### Create Header Component
     - in app/javascript/components/components
-    - 
+    - create test file for header component
+
+    ## Add Enzyme
+    - $ yarn add -D enzyme react-test-renderer enzyme-adapter-react-16
+    - $ yarn jest
+    - - in order for Enzyme to work in this app we need to tell it to work only in .js files.
+        - so we need to pass in some code to the package.json to specify where it will run.
+        ```
+        "jest": {
+            "roots": [
+                "app/javascript/components"
+            ]
+        }
+        ```
 
 
 
