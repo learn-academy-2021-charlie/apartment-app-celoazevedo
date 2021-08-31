@@ -4,7 +4,7 @@ class ApartmentIndex extends Component {
     render() {
         return (
             <div>
-                <h2>Index Page!</h2>
+                <h2>Apartment Index Page!</h2>
             </div>
         );
     }

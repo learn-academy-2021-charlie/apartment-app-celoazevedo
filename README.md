@@ -169,10 +169,78 @@
     ### Create Home page
     - created Home page
     - added Route and component call to App.js 
+- branch: aadd-home-navitem-to-header
+    - add home page navlink to header component
 
 ## ask if we need to create a folder to put our pages test files in....
     
+## 
+- branch: updating-readme
+    - updated user stories
+    - tested sign out link
+        - was not working
+    - checked config file -- so Devise listen for logout requests vie GET
+    ```
+    # Find this line:
+    config.sign_out_via = :delete
+    # and replace it with this:
+    config.sign_out_via = :get
+    ```
+    - NOW signout is working!
+    
 
+
+
+## Lets review the User stories!!!
+
+## User Stories
+    ### Devise and Header Stories
+        X  Story: As a un-registered guest, I can go to registration page with a form and register as a new user
+    - Devise, navigation from Header component
+        X  Story: As a registered user who has not logged in, I can go to a login page
+    - Devise, navigation from Header component
+        X  Story: As a logged in user, I should be able to log out
+    - Devise, navigation from Header component
+        Story: As an un-registered guest on the website, I can see a header element at the top of each page containing navigation to the other pages
+    
+    ### Header component
+        Process:
+        Header component (done)
+        Styling (added to the TODO items)
+        Navigation to Devise (done)
+        Navigation Index (done)
+        Create index page, basic code
+        Define the route to index page
+        Testing the Header
+        - $ yarn add jest
+        - $ yarn add -D enzyme react-test-renderer enzyme-adapter-react-16
+        Add this to the package.json:
+        ```
+        "jest": {
+            "roots": [
+                "app/javascript/components"
+            ]
+        }
+        ```
+    
+    ###### TODO: More styling on the header
+    
+    
+    # Read
+    Story: As an un-registered guest on the website, I can go to a web page and see a list of available apartments. Apartments have: a street designation, a city, state, a manager's name, manager's contact email, monthly rental price, bedrooms, bathrooms, and whether they allow pets
+    
+    # Index
+    Have an index page but nothing on it yet
+    Story: As an un-registered guest on the website, I can click on an apartment to view its details
+    
+    # Show
+    Create
+    Story: As a logged in user, I can go to a new apartment page with a form and create a new apartment
+    Create, only if you are logged_in, Desive
+    
+    # Update
+    Story: As a logged in user, I can edit the information for any apartment I have created, but I cannot edit the information for apartments that belong to someone else
+    Edit, only apartments with the foreign key of the current user
 
 
     
