@@ -36,8 +36,15 @@
         - $ rails c
         - $ User.all
 
-    
+## Add Appartment Model
+- branch: add-apartment
+    ### Create apartment Model:
+    - The Devise User model is going to have an association with the Apartment model
+    - $ rails g resource Apartment street:string city:string state:string manager:string email:string price:string bedrooms:integer bathrooms:integer pets:string user_id:integer
+    - $ rails db:migrate
 
+    ### Create Association between Apartment and User
+    
 
 
 
