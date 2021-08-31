@@ -71,7 +71,43 @@
     - app/db/seed.rb
     - in seed file we created 2 apartments for the user with email: 'test2@gmail.com'
 
+## Add REACT!
+- branch: add-react
+    - $ bundle add react-rails
+    - $ rails webpacker:install
+    - $ rails webpacker:install:react
+    - $ rails generate react:install
+    - $ rails generate react:component App
+        - bring in the Parent Component
+    - $ rails generate controller Home
+        - to hookup App.js so it can be rendered in the view
 
+    ### Set up component view
+    - in app/views/home/index.html.erb
+    ```
+        <%= react_component "App", {
+        logged_in: user_signed_in?,
+        current_user: current_user,
+        new_user_route: new_user_registration_path,
+        sign_in_route: new_user_session_path,
+        sign_out_route: destroy_user_session_path
+        } %>
+    ```
+
+    ### Set up Routes and Constrains
+    - to clearly separate Rails routing responsabilities
+    - to direct html traffic to the 'home#index' route 
+    - in config/routes.rb
+    ```
+    Rails.application.routes.draw do
+        resources :apartments
+        devise_for :users
+        get '*path', to: 'home#index', constraints: ->(request){ request.format.html? }
+        root 'home#index'
+    end
+    ```
+
+    
 
 
 
