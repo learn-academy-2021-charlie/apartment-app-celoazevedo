@@ -148,7 +148,7 @@
     - in app/javascript/components/components
     - create test file for header component
 
-    ## Add Enzyme
+    ### Add Enzyme
     - $ yarn add -D enzyme react-test-renderer enzyme-adapter-react-16
     - $ yarn jest
     - - in order for Enzyme to work in this app we need to tell it to work only in .js files.
@@ -160,7 +160,17 @@
             ]
         }
         ```
-    
+## Create apartment index page
+- branch: apartmentindex-page
+
+    - created ApartmentIndex page
+    - added Route and component call to App.js
+
+    ### Create Home page
+    - created Home page
+    - added Route and component call to App.js 
+
+## ask if we need to create a folder to put our pages test files in....
     
 
 

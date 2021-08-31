@@ -7,6 +7,7 @@ import {
 } from "react-router-dom"
 import Header from "./components/Header"
 import ApartmentIndex from "./pages/ApartmentIndex"
+import Home from "./pages/Home"
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
           sign_out_route={sign_out_route}/>
 
         <Switch>
+          <Route exact path="/" component={Home}/>
           <Route path="/apartmentIndex" component={ApartmentIndex}/>
         </Switch>
       </Router>
