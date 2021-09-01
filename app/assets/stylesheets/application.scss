@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ @import 'bootstrap';
+
+//  apartment index page cards
+ .cards-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
