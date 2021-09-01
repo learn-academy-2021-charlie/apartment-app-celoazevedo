@@ -8,7 +8,7 @@ class ApartmentIndex extends Component {
                 <h2>Apartment Index Page!</h2>
                 <br />
                 <Col sm="6">
-                    { this.props.apartments.map(apartment => {
+                    {this.props.apartments && this.props.apartments.map(apartment => {
                     return (
                         <Card body className="text-center" key={ apartment.id }>
                             <CardTitle>

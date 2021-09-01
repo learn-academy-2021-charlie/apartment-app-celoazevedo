@@ -12,7 +12,7 @@ class Header extends Component {
 
         return (
             <>
-                <Navbar color="light" light expand="md">
+                <Navbar className="nav-bar" color="light" light expand="md">
                     <NavbarBrand href="/">The Apartment App</NavbarBrand>
                     <Nav>
                         <NavItem>
