@@ -216,6 +216,10 @@
      - create show page
      - create mockApts.js file to work with show page.
      - add router to app js - show page is working wiht mock data
+     - show page is working without mock data. now able to display data from backend
+     - create test for apartmentShow.js
+        - test pass
+    
 
 
 

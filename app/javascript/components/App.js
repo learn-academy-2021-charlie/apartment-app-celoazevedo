@@ -66,7 +66,10 @@ class App extends Component {
 
           <Route path="/apartmentIndex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> }  />
 
-          <Route path="/apartmentShow" render={ (props) => <ApartmentShow apartments={ this.state.apts }/> } />
+          <Route path="/apartmentShow/:id" render={ (props) => {
+            let id = props.match.params.id
+            let apartment = this.state.apartments.find(apartment =>apartment.id === +id)
+            return <ApartmentShow apartment={ apartment }/> }} />
 
         </Switch>
       </Router>
