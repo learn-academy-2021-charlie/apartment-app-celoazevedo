@@ -199,9 +199,19 @@
 ## Editing/adding test
     - branch: build-tests
         - Header test pass
-        
+        - Home test pass
+        - apartmentindex test pass
 
-
+## Spec test and model validation
+    - branch: spec-test
+        - add rspec test to apartments_spec.rb
+            - 'GET/index' route
+            - test pass
+        - add rspec and model validation to apartment_spec.rb
+            - for now just validating the presence of street property.
+            - TODO: add more validations.
+    - tests are passing
+    
 
 
 ## Lets review the User stories!!!

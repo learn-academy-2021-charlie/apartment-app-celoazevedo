@@ -13,7 +13,7 @@ class Header extends Component {
         return (
             <>
                 <Navbar className="nav-bar" color="light" light expand="md">
-                    <NavbarBrand href="/">The Apartment App</NavbarBrand>
+                    <NavbarBrand href="/apartmentIndex">The Apartment App</NavbarBrand>
                     <Nav>
                         <NavItem>
                             <a className="nav-link" href="/">Home</a>
