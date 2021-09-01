@@ -8,14 +8,17 @@ import {
 } from "react-router-dom"
 
 import Header from "./components/Header"
-import ApartmentIndex from "./pages/ApartmentIndex"
 import Home from "./pages/Home"
+import ApartmentIndex from "./pages/ApartmentIndex"
+import ApartmentShow from "./pages/ApartmentShow"
+import mockApts from "./mockApts"
 
 class App extends Component {
   // create constructor and state object
   constructor(props){
     super(props)
     this.state = {
+      apts: mockApts,
       apartments: []
     }
   }
@@ -58,8 +61,16 @@ class App extends Component {
           sign_out_route={sign_out_route}/>
 
         <Switch>
+
           <Route exact path="/" component={Home}/>
+
           <Route path="/apartmentIndex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> }  />
+
+          <Route path="/apartmentShow/:id" render={ (props) => {
+            let id = props.match.params.id
+            let apartment = this.state.apartments.find(apartment =>apartment.id === +id)
+            return <ApartmentShow apartment={ apartment }/> }} />
+
         </Switch>
       </Router>
     )

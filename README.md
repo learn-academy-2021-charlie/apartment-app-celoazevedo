@@ -199,9 +199,41 @@
 ## Editing/adding test
     - branch: build-tests
         - Header test pass
-        
+        - Home test pass
+        - apartmentindex test pass
+
+## Spec test and model validation
+    - branch: spec-test
+        - add rspec test to apartments_spec.rb
+            - 'GET/index' route
+            - test pass
+        - add rspec and model validation to apartment_spec.rb
+            - for now just validating the presence of street property.
+            - TODO: add more validations.
+    - tests are passing
+    ! - Still in this branch
+    ## Create rspec test for POST/create route - commented out!
+     - create show page
+     - create mockApts.js file to work with show page.
+     - add router to app js - show page is working wiht mock data
+     - show page is working without mock data. now able to display data from backend
+     - create test for apartmentShow.js
+        - test pass
+    
 
 
+
+
+!!!!!!
+TDD stands for Test Driven Development
+
+Determine a feature or behavior to implement.
+Create the describe and it blocks pertaining to the that feature only.
+Put in expects in one it block to assert how the objects should behave.
+Run the tests and see that they fail (the red part of red-green refactor).
+Implement just enough of the software to make the tests pass (the green part of red-green refactor).
+Add more expects and repeat the process, until all tests pass and all features are implemented.
+!!!!!!
 
 
 ## Lets review the User stories!!!
