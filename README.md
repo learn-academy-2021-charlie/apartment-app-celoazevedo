@@ -193,6 +193,16 @@
         - now we can see a list of all of the apartments and its info in apartmentsIndex page
         - http://localhost:3000/apartmentIndex
     
+## Styled header and apartmentindex page
+    - branch: styles
+
+## Editing/adding test
+    - branch: build-tests
+        - Header test pass
+        
+
+
+
 
 ## Lets review the User stories!!!
 
