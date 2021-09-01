@@ -7,4 +7,5 @@ RSpec.describe Apartment, type: :model do
   end
 
 
+
 end
