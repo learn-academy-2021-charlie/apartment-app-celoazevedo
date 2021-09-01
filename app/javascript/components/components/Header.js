@@ -16,7 +16,7 @@ class Header extends Component {
                     <NavbarBrand href="/">The Apartment App</NavbarBrand>
                     <Nav>
                         <NavItem>
-                            <a className="nav-link" to="/">Home</a>
+                            <a className="nav-link" href="/">Home</a>
                         </NavItem>
                         <NavItem className="nav-sign-link">
                             {logged_in && <a href={sign_out_route} className="nav-link">Sign Out</a>}
