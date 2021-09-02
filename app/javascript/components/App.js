@@ -62,8 +62,8 @@ class App extends Component {
 
   // update fetch
   apartmentUpdate = (editApartment, id) => {
-    console.log("apartment:", editApartment)
-    console.log("id:", id)
+    // console.log("apartment:", editApartment)
+    // console.log("id:", id)
     fetch(`http://localhost:3000/apartments/${id}`, {
       body: JSON.stringify(editApartment),
       headers: {
@@ -76,6 +76,17 @@ class App extends Component {
     .catch(errors => console.log("Apartment update errors:", errors))
   }
 
+  deleteTurtle = (id) => {
+    fetch(`http://localhost:3000/apartments/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => response.json)
+    .then(() => this.apartmentIndex())
+    .catch(errors => console.log("apartment delete errors:", errors))
+  }
 
 
   render() {
@@ -101,6 +112,8 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
 
           <Route path="/apartmentIndex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> }  />
+
+          {/* need to add the delete functionality to the show page. Logic already implemented */}
 
           <Route path="/apartmentShow/:id" render={ (props) => {
             let id = props.match.params.id
