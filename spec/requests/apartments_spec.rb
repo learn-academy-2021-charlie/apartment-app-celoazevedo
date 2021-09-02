@@ -38,25 +38,36 @@ RSpec.describe "Apartments", type: :request do
     end
   end
 
-  # describe "POST /create" do
-  #   it "creates a new apartment" do
-  #     apartment_params = {
-  #       apartment:  {
-  #         street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz'
-  #       }
-  #     }
+  
+  describe "POST /create" do
+    it "creates a new apartment" do
+      apartment_params = {
+        apartment:  {
+          street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
+        }
+      }
 
-  #   post '/apartments', params: apartment_params
-  #   new_apartment = Apartment.first
-  #   expect(response).to have_http_status(200)
-  #   expect(new_apartment.street).to eq "333 The St."
-  #   expect(new_apartment.bedrooms).to eq 3
-  #   expect(new_apartment.pets).to eq "no, plz"
+    post '/apartments', params: apartment_params
+    expect(response).to have_http_status(200)
+    new_apartment = Apartment.where()
+    expect(new_apartment.street).to eq "333 The St."
+    expect(new_apartment.bedrooms).to eq 3
+    expect(new_apartment.pets).to eq "no, plz"
 
-  #   end
-  # end
+    end
+  end
 
+#  rspec spec/requests/apartments_spec.rb
 
+# Prefix Verb   URI Pattern                         Controller#Action
+# apartments GET    /apartments(.:format)           apartments#index
+#            POST   /apartments(.:format)           apartments#create
+# new_apartment GET    /apartments/new(.:format)    apartments#new
+# edit_apartment GET    /apartments/:id/edit(.:format)  apartments#edit
+#  apartment GET    /apartments/:id(.:format)        apartments#show
+#            PATCH  /apartments/:id(.:format)        apartments#update
+#            PUT    /apartments/:id(.:format)        apartments#update
+#            DELETE /apartments/:id(.:format)        apartments#destroy
 
 
 end

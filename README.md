@@ -220,7 +220,35 @@
      - create test for apartmentShow.js
         - test pass
     
+## Create/POST functionality
+    - branch: create
+        - steps:
+            - create only if you are logged in
+            - add validation for presence of attributes
+            - add model spces for validation
+            - create ApartmentNew page
+            - user can add an appartment
+    CREATE fetch
+    As a developer, I can update the createNewCat method to post information to the database
 
+    As a user, I can create a new apartment
+
+    As a user, I can see my new apartment in the apartment list
+    
+    CREATE endpoints
+    As a developer, I can add a create request spec to my application
+
+    As a developer, I can add a create endpoint to my application
+
+    - created rspec test for POST / create endpoint, route
+    - create controller method for to create a new apartment 
+    - rspec test pass!
+
+    TODO - Add test for ApartmentIndex page!
+
+
+## fetch for Update 
+    - branch: update-apt
 
 
 
