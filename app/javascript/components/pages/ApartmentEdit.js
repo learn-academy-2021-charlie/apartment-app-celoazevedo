@@ -129,8 +129,7 @@ class ApartmentEdit extends Component {
                     </Button>
                     </div>
                 </Form>
-                {/* remember to redirect to the show page for this appartment */}
-                { this.state.success && <Redirect to="/apartmentIndex" />}
+                { this.state.success && <Redirect to={`/apartmentShow/${this.props.apartment.id}` }/>}
             </div>
         );
     }
