@@ -12,6 +12,7 @@ import Home from "./pages/Home"
 import ApartmentIndex from "./pages/ApartmentIndex"
 import ApartmentShow from "./pages/ApartmentShow"
 import ApartmentNew from "./pages/ApartmentNew"
+import ApartmentEdit from "./pages/ApartmentEdit"
 // import mockApts from "./mockApts"
 
 class App extends Component {
@@ -59,6 +60,24 @@ class App extends Component {
       .catch(errors => console.log("Apartment create errors:", errors))
     }
 
+  // update fetch
+  apartmentUpdate = (editApartment, id) => {
+    console.log("apartment:", editApartment)
+    console.log("id:", id)
+    fetch(`http://localhost:3000/apartments/${id}`, {
+      body: JSON.stringify(editApartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => response.json)
+    .then(() => this.apartmentIndex)
+    .catch(errors => console.log("Apartment update errors:", errors))
+  }
+
+
+
   render() {
     
     // destructure props 
@@ -90,6 +109,13 @@ class App extends Component {
 
           <Route path="/apartmentNew" render={(props) => <ApartmentNew apartmentCreate={this.apartmentCreate}/>}
           />
+
+          <Route path="/apartmentEdit/:id" render={(props) =>{
+            let id = props.match.params.id
+            let apartment = this.state.apartments.find(apartment => apartment.id === +id)
+            return<ApartmentEdit apartmentUpdate={this.apartmentUpdate} apartment={apartment} />
+          }}
+          />     
 
         </Switch>
       </Router>
