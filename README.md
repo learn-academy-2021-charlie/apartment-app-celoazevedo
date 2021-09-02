@@ -226,6 +226,8 @@
             - create only if you are logged in
             - add validation for presence of attributes
             - add model spces for validation
+            - create ApartmentNew page
+            - user can add an appartment
     CREATE fetch
     As a developer, I can update the createNewCat method to post information to the database
 
@@ -241,6 +243,8 @@
     - created rspec test for POST / create endpoint, route
     - create controller method for to create a new apartment 
     - rspec test pass!
+
+    TODO - Add test for ApartmentIndex page!
 
 
 ## fetch for Update 

@@ -11,14 +11,15 @@ import Header from "./components/Header"
 import Home from "./pages/Home"
 import ApartmentIndex from "./pages/ApartmentIndex"
 import ApartmentShow from "./pages/ApartmentShow"
-import mockApts from "./mockApts"
+import ApartmentNew from "./pages/ApartmentNew"
+// import mockApts from "./mockApts"
 
 class App extends Component {
   // create constructor and state object
   constructor(props){
     super(props)
     this.state = {
-      apts: mockApts,
+      // apts: mockApts,
       apartments: []
     }
   }
@@ -28,7 +29,7 @@ class App extends Component {
     this.apartmentIndex()
   }
 
-  // create index fetch functionality
+  // index fetch functionality
   apartmentIndex = () => {
     fetch("http://localhost:3000/apartments")
     .then(response => {
@@ -41,6 +42,21 @@ class App extends Component {
       console.log("apartmentIndex errors:", errors)
     })
   }
+
+  // create fetch 
+  apartmentCreate = (newApartment) => {
+    console.log(newApartment)
+    fetch("http://localhost:3000/apartments", {
+      body: JSON.stringify(newApartment),
+      headers: {
+          "Content-Type": "application/json"
+        },
+      method: "POST"
+      })
+      .then(response => response.json())
+      .then(() => this.apartmentIndex())
+      .catch(errors => console.log("Apartment create errors:", errors))
+    }
 
   render() {
     
@@ -70,6 +86,9 @@ class App extends Component {
             let id = props.match.params.id
             let apartment = this.state.apartments.find(apartment =>apartment.id === +id)
             return <ApartmentShow apartment={ apartment }/> }} />
+
+          <Route path="/apartmentNew" render={(props) => <ApartmentNew apartmentCreate={this.apartmentCreate} current_user={ current_user }/>}
+          />
 
         </Switch>
       </Router>
