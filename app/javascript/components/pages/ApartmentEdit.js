@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 
-class ApartmentNew extends Component {
+
+class ApartmentEdit extends Component {
 
     constructor(props){
         super(props)
@@ -22,24 +23,22 @@ class ApartmentNew extends Component {
         }
     }
 
-
     handleChange = (e) => {
-        // destructuring form out of state
         let { form } = this.state
         form[e.target.name] = e.target.value
-        // setting state to the updated form
         this.setState({ form: form })
     }
-
+  
     handleSubmit = () => {
-        this.props.apartmentCreate(this.state.form)
+        this.props.apartmentUpdate(this.state.form, this.props.apartment.id)
         this.setState({ success: true })
     }
 
     render() {
+
         return (
             <div className="formContainer">
-                <h3>Add an Appartment Page!</h3>
+                <h3>Edit Appartment Page!</h3>
                 <Form>
                     <FormGroup>
                         <Label for="street">Street</Label>
@@ -130,13 +129,11 @@ class ApartmentNew extends Component {
                     </Button>
                     </div>
                 </Form>
+                {/* remember to redirect to the show page for this appartment */}
                 { this.state.success && <Redirect to="/apartmentIndex" />}
             </div>
-
         );
     }
 }
 
-export default ApartmentNew;
-
-
+export default ApartmentEdit;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, Col, CardSubtitle, CardText, CardBody, CardLink} from 'reactstrap'
-import mockApts from '../mockApts';
+// import mockApts from '../mockApts';
 
 
 class ApartmentShow extends Component {
