@@ -59,36 +59,36 @@ RSpec.describe "Apartments", type: :request do
   end
 
 
-  # describe "PATCH /update" do
-  #   it "update apartment" do
-  #     apartment_params = {
-  #       apartment:  {
-  #         street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
-  #       }
-  #     }
+  describe "PATCH /update" do
+    it "update apartment" do
+      apartment_params = {
+        apartment:  {
+          street: 'POST St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
+        }
+      }
 
-  #   post '/apartments', params: apartments_params
+      post '/apartments', params: apartment_params
 
-  #   updated_apartment_params = {
-  #     apartment: {
-  #       street: 'Updated St.', city: 'Valenca', state: 'Fortaleza', manager: 'Ms. P', email: 'jah@email.com', price: '7000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
-  #     }
-  #   }
+      updated_apartment_params = {
+        apartment: {
+          street: 'Updated St.', city: 'Valenca', state: 'Fortaleza', manager: 'Ms. P', email: 'jah@email.com', price: '7000', bedrooms: 15, bathrooms: 2, pets: 'no, plz', user_id: user.id
+        }
+      }
 
-  #   apartment = Apartment.first
+      apartment = Apartment.first
 
-  #   patch "/apartments/#{apartment.user_id}", params: updated_apartment_params
+      patch "/apartments/#{apartment.id}", params: updated_apartment_params
 
-  #   updated_apartment_params
-  #   updated_apartment = Apartment.find(apartment.user_id)
+      # updated_apartment_params
+      updated_apartment = Apartment.find(apartment.id)
 
-  #   expect(response).to have_http_status(200)
-  #   expect(updated_apartment.street).to eq 'Updated St.'
-  #   expect(updated_apartment.bedrooms).to eq 15
-  #   expect(updated_apartment.city).to eq 'Valenca'
+      expect(response).to have_http_status(200)
+      expect(updated_apartment.street).to eq 'Updated St.'
+      expect(updated_apartment.bedrooms).to eq 15
+      expect(updated_apartment.city).to eq 'Valenca'
 
-  #   end
-  # end
+    end
+  end
 
 #  rspec spec/requests/apartments_spec.rb
 
