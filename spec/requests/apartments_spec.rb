@@ -38,7 +38,7 @@ RSpec.describe "Apartments", type: :request do
     end
   end
 
-  
+  #  NEED TO FIX TEST FOR POST endpoint -- Post crud action working in app.
   describe "POST /create" do
     it "creates a new apartment" do
       apartment_params = {
@@ -46,16 +46,49 @@ RSpec.describe "Apartments", type: :request do
           street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
         }
       }
+      
 
-    post '/apartments', params: apartment_params
-    expect(response).to have_http_status(200)
-    new_apartment = Apartment.where()
-    expect(new_apartment.street).to eq "333 The St."
-    expect(new_apartment.bedrooms).to eq 3
-    expect(new_apartment.pets).to eq "no, plz"
+      post '/apartments', params: apartment_params
+      expect(response).to have_http_status(200)
+      new_apartment = Apartment.first
+      expect(new_apartment.street).to eq "333 The St."
+      expect(new_apartment.bedrooms).to eq 3
+      expect(new_apartment.pets).to eq "no, plz"
 
     end
   end
+
+
+  # describe "PATCH /update" do
+  #   it "update apartment" do
+  #     apartment_params = {
+  #       apartment:  {
+  #         street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
+  #       }
+  #     }
+
+  #   post '/apartments', params: apartments_params
+
+  #   updated_apartment_params = {
+  #     apartment: {
+  #       street: 'Updated St.', city: 'Valenca', state: 'Fortaleza', manager: 'Ms. P', email: 'jah@email.com', price: '7000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
+  #     }
+  #   }
+
+  #   apartment = Apartment.first
+
+  #   patch "/apartments/#{apartment.user_id}", params: updated_apartment_params
+
+  #   updated_apartment_params
+  #   updated_apartment = Apartment.find(apartment.user_id)
+
+  #   expect(response).to have_http_status(200)
+  #   expect(updated_apartment.street).to eq 'Updated St.'
+  #   expect(updated_apartment.bedrooms).to eq 15
+  #   expect(updated_apartment.city).to eq 'Valenca'
+
+  #   end
+  # end
 
 #  rspec spec/requests/apartments_spec.rb
 

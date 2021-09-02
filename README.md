@@ -235,7 +235,7 @@
 
     As a user, I can see my new apartment in the apartment list
     
-    CREATE endpoints
+     CREATE endpoints
     As a developer, I can add a create request spec to my application
 
     As a developer, I can add a create endpoint to my application
@@ -244,11 +244,47 @@
     - create controller method for to create a new apartment 
     - rspec test pass!
 
+    - was getting a error "Unexpected token", related to JSON file comming back. 
+        - added to applicaiton controller 
+        skip_before_action :verify_authenticity_token
+    
+
     TODO - Add test for ApartmentIndex page!
+        - fix test for Create
+        - add test for Post
+
+    
 
 
-## fetch for Update 
-    - branch: update-apt
+## Update  
+    - branch: update
+        - update endpoints
+            - Add a request spec for update
+            - Add an update controller method
+        - update functinality
+            - As a user, I can fill out a form to edit an existing cat
+            - As a developer, I can add onChange and value attributes to each input
+
+            - As a developer, I can pass the form data to App.js on submit
+
+            - As a developer, I can see my updated cat logged in the console on submit
+
+            - As a user, I can see a button on my show page that will take me to the edit page for that particular cat
+
+            - As a user, I can be routed to the show page after I submit the edited cat form
+
+            - As a developer, I have test coverage on my update page
+
+
+    - added test for apartmentNew page
+    - 
+
+## Delete Func
+    - branch:
+        - Add a delete request spec
+        - Add a destroy controller method
+
+
 
 
 
@@ -334,47 +370,3 @@ Add this code snippet to replace the image in the tests.
 let mockPic = "this is mock pic"
 export default mockPic
 ######
-
-
-
-### Got this message after running - $ rails generate devise:install
-learnacademy@LEARNs-Air apartment_app % rails generate devise:install
-Running via Spring preloader in process 2071
-      create  config/initializers/devise.rb
-      create  config/locales/devise.en.yml
-===============================================================================
-
-Depending on your application's configuration some manual setup may be required:
-
-  1. Ensure you have defined default url options in your environments files. Here
-     is an example of default_url_options appropriate for a development environment
-     in config/environments/development.rb:
-
-       config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-     In production, :host should be set to the actual host of your application.
-
-     * Required for all applications. *
-
-  2. Ensure you have defined root_url to *something* in your config/routes.rb.
-     For example:
-
-       root to: "home#index"
-     
-     * Not required for API-only Applications *
-
-  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-     For example:
-
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-
-     * Not required for API-only Applications *
-
-  4. You can copy Devise views (for customization) to your app by running:
-
-       rails g devise:views
-       
-     * Not required *
-
-===============================================================================

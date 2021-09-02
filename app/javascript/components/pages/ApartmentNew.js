@@ -16,8 +16,7 @@ class ApartmentNew extends Component {
             price: "",
             bedrooms: "",
             bathrooms: "",
-            pets: "",
-            user_id: this.props.current_user.id
+            pets: ""
           },
           success: false
         }
@@ -39,8 +38,8 @@ class ApartmentNew extends Component {
 
     render() {
         return (
-            <div>
-                <h3> Add an Appartment Page! </h3>
+            <div className="formContainer">
+                <h3>Add an Appartment Page!</h3>
                 <Form>
                     <FormGroup>
                         <Label for="street">Street</Label>

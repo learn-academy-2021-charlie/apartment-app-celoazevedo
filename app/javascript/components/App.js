@@ -46,6 +46,7 @@ class App extends Component {
   // create fetch 
   apartmentCreate = (newApartment) => {
     console.log(newApartment)
+    newApartment.user_id = this.props.current_user.id
     fetch("http://localhost:3000/apartments", {
       body: JSON.stringify(newApartment),
       headers: {
@@ -87,7 +88,7 @@ class App extends Component {
             let apartment = this.state.apartments.find(apartment =>apartment.id === +id)
             return <ApartmentShow apartment={ apartment }/> }} />
 
-          <Route path="/apartmentNew" render={(props) => <ApartmentNew apartmentCreate={this.apartmentCreate} current_user={ current_user }/>}
+          <Route path="/apartmentNew" render={(props) => <ApartmentNew apartmentCreate={this.apartmentCreate}/>}
           />
 
         </Switch>
