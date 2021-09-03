@@ -37,8 +37,8 @@ class ApartmentEdit extends Component {
     render() {
 
         return (
-            <>
-                {/* <h3>Edit Appartment Page!</h3> */}
+            <div className="formContainer">
+                <h3>Edit Appartment Page!</h3>
                     <Form className="formEdit">
                         <Row form>
                             <Col md={6}>
@@ -145,7 +145,7 @@ class ApartmentEdit extends Component {
                                     value={ this.state.form.price }/>
                             </FormGroup>
                         </Col>
-                    <div className="button">
+                    <div className="addButtonContainer">
                     <Button
                         name="submit"
                         onClick={this.handleSubmit}>
@@ -154,7 +154,7 @@ class ApartmentEdit extends Component {
                     </div>
                 </Form>
                 { this.state.success && <Redirect to={`/apartmentShow/${this.props.apartment.id}` }/>}
-            </>
+            </div>
         );
     }
 }

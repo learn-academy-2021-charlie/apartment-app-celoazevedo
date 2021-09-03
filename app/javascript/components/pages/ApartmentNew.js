@@ -146,7 +146,8 @@ class ApartmentNew extends Component {
                                     value={ this.state.form.price }/>
                             </FormGroup>
                         </Col>
-                    <div>
+                    <div className="addButtonContainer">
+                    <br />
                     <Button
                         name="submit"
                         onClick={this.handleSubmit}>

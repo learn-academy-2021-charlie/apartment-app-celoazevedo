@@ -11,8 +11,8 @@ class Header extends Component {
 
         return (
             <>
-                <Navbar className="nav-bar" color="light" light expand="md">
-                    <NavbarBrand href="/">The Apartment App</NavbarBrand>
+                <Navbar className="nav-bar" color="dark" light expand="md">
+                    <NavbarBrand className="mr-auto" href="/">The Apartment App</NavbarBrand>
                     <Nav>
                         <NavItem>
                             <a className="nav-link" href="/">Home</a>

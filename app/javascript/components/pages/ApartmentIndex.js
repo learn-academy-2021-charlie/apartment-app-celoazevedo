@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, Col, CardSubtitle, CardText, CardBody, CardLink, CardHeader, CardFooter} from 'reactstrap'
+import { Card, CardTitle, Col, CardSubtitle, CardText, CardBody, CardLink, CardHeader, CardFooter, NavItem} from 'reactstrap'
 
 class ApartmentIndex extends Component {
     render() {
@@ -22,8 +22,10 @@ class ApartmentIndex extends Component {
                                 <CardText>{ `If interested please contact ${apartment.manager} at ${apartment.email}` }</CardText>
                             </CardBody>
                             <CardFooter className="text-muted">
-                                <CardLink href={`/apartmentShow/${apartment.id}`}>See Apt Details</CardLink>
-                                <CardLink href={`/apartmentEdit/${apartment.id}`}>Edit Apt</CardLink>
+                                <NavItem className="nav-link">    <a href={`/apartmentShow/${apartment.id}`}>See Apt Details</a>
+                                </NavItem>
+                                {/* <CardLink href={`/apartmentShow/${apartment.id}`}>See Apt Details</CardLink> */}
+                                <NavItem className="nav-link"><a href={`/apartmentEdit/${apartment.id}`}>Edit Apt</a></NavItem>
                             </CardFooter>
                         </Card>
                     )
