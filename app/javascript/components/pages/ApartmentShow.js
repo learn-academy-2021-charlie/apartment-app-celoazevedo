@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, Col, CardSubtitle, CardText, CardBody, CardLink} from 'reactstrap'
+import { Card, CardTitle, CardSubtitle, CardText, CardBody, CardLink, Button} from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 // import mockApts from '../mockApts';
 
 
 class ApartmentShow extends Component {
     // http://localhost:3000/apartmentShow/1
+    constructor(props) {
+        super(props)
+        this.state = {
+            success: false
+        }
+    }
    
+
+    handleSubmit = () => {
+        console.log(this.props.apartment.id)
+        this.props.deleteApartment(this.props.apartment.id)
+        this.setState({ success: true })
+    }
 
     render() {
         // destructure props to access apartment
@@ -25,7 +38,12 @@ class ApartmentShow extends Component {
                     </CardSubtitle>
                     <CardBody>
                         <CardText>{ `If interested please contact ${apartment && apartment.manager} at ${apartment && apartment.email}` }</CardText>
-                        <CardLink href="#">See Apt Details</CardLink>
+                        {/* <CardLink href="#">See Apt Details</CardLink> */}
+                        <NavLink to="/apartmentIndex" >
+                            <Button onClick={ this.handleSubmit }>
+                                Delete Apt
+                            </Button>
+                        </NavLink>
                     </CardBody>
                 </Card>
             </div>

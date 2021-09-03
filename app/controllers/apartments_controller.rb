@@ -6,7 +6,7 @@ class ApartmentsController < ApplicationController
     end
 
     def create
-        current_user = User.find(params[:apartment][:user_id]) 
+        # current_user = User.find(params[:apartment][:user_id]) 
         apartment = current_user.apartments.create(apartment_params)
         if apartment.valid?
             render json: apartment
