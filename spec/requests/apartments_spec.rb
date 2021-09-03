@@ -25,30 +25,37 @@ RSpec.describe "Apartments", type: :request do
     end
   end
 
-  describe "GET /index" do
-    it "gets an apartment" do
-      Apartment.create street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
+  # describe "GET /index" do
+  #   it "gets an apartment" do
+  #     Apartment.create street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
 
-      # Make a request
-      get '/apartments'
+  #     # Make a request
+  #     get '/apartments'
 
-      apartment = JSON.parse(response.body)
-      expect(response).to have_http_status(200)
-      expect(apartment.length).to eq 1
-    end
-  end
+  #     apartment = JSON.parse(response.body)
+  #     expect(response).to have_http_status(200)
+  #     expect(apartment.length).to eq 1
+  #   end
+  # end
 
-  #  NEED TO FIX TEST FOR POST endpoint -- Post crud action working in app.
   describe "POST /create" do
     it "creates a new apartment" do
       apartment_params = {
         apartment:  {
-          street: '333 The St.', city: 'Salvador', state: 'Bahia', manager: 'Ms. Jah', email: 'jah@email.com', price: '6000', bedrooms: 3, bathrooms: 2, pets: 'no, plz', user_id: user.id
+          street: '333 The St.', 
+          city: 'Salvador', 
+          state: 'Bahia', 
+          manager: 'Ms. Jah', 
+          email: 'jah@email.com', 
+          price: '6000', 
+          bedrooms: 3, 
+          bathrooms: 2, 
+          pets: 'no, plz', 
+          user_id: user.id
         }
       }
-      
-
       post '/apartments', params: apartment_params
+
       expect(response).to have_http_status(200)
       new_apartment = Apartment.first
       expect(new_apartment.street).to eq "333 The St."
@@ -56,6 +63,51 @@ RSpec.describe "Apartments", type: :request do
       expect(new_apartment.pets).to eq "no, plz"
 
     end
+
+    it 'cannot create a new apartment without a street' do
+      apartment_params = {
+        apartment: {
+          # street: '333 The St.', 
+          city: 'Salvador', 
+          state: 'Bahia', 
+          manager: 'Ms. Jah', 
+          email: 'jah@email.com', 
+          price: '6000', 
+          bedrooms: 3, 
+          bathrooms: 2, 
+          pets: 'no, plz', 
+          user_id: user.id
+        }
+      }
+      post '/apartments', params: apartment_params
+      apartment = JSON.parse(response.body)
+      expect(apartment['street']).to include "can't be blank"
+      expect(response).to have_http_status(422)
+    end
+
+    it 'cannot create a new apartment without a street' do
+      apartment_params = {
+        apartment: {
+          street: '333 The St.', 
+          # city: 'Salvador', 
+          state: 'Bahia', 
+          manager: 'Ms. Jah', 
+          email: 'jah@email.com', 
+          price: '6000', 
+          bedrooms: 3, 
+          bathrooms: 2, 
+          pets: 'no, plz', 
+          user_id: user.id
+        }
+      }
+      post '/apartments', params: apartment_params
+      apartment = JSON.parse(response.body)
+      expect(apartment['city']).to include "can't be blank"
+      expect(response).to have_http_status(422)
+    end
+
+
+
   end
 
 

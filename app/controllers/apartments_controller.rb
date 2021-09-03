@@ -7,7 +7,7 @@ class ApartmentsController < ApplicationController
 
     def create
         # current_user = User.find(params[:apartment][:user_id]) 
-        apartment = current_user.apartments.create(apartment_params)
+        apartment = Apartment.create(apartment_params)
         if apartment.valid?
             render json: apartment
         else
@@ -34,7 +34,7 @@ class ApartmentsController < ApplicationController
     
     private
     def apartment_params
-        params.require(:apartment).permit(:street, :city, :state, :manager, :email, :price, :bedrooms, :bathrooms, :pets)
+        params.require(:apartment).permit(:street, :city, :state, :manager, :email, :price, :bedrooms, :bathrooms, :pets, :user_id)
     end
 
 end

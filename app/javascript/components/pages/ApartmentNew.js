@@ -16,7 +16,8 @@ class ApartmentNew extends Component {
             price: "",
             bedrooms: "",
             bathrooms: "",
-            pets: ""
+            pets: "",
+            user_id: this.props.current_user.id
           },
           success: false
         }
