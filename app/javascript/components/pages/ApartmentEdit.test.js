@@ -1,13 +1,13 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import ApartmentNew from './ApartmentNew'
+import ApartmentEdit from './ApartmentEdit'
 
 Enzyme.configure({adapter: new Adapter()})
 
-describe("When apartmentNew renders", () => {
+describe("When apartmentEdit renders", () => {
   it("displays a form inside of a div element with className formContainer", () => {
-    const apartmentNewForm = shallow(<ApartmentNew />).find(".formContainer")
-    expect(apartmentNewForm.length).toEqual(1)
+    const apartmentEditForm = shallow(<ApartmentEdit />).find(".formContainer")
+    expect(apartmentEditForm.length).toEqual(1)
   })
 })

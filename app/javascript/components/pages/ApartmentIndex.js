@@ -20,6 +20,7 @@ class ApartmentIndex extends Component {
                             <CardBody>
                                 <CardText>{ `If interested please contact ${apartment.manager} at ${apartment.email}` }</CardText>
                                 <CardLink href="#">See Apt Details</CardLink>
+                                <CardLink href={`/apartmentEdit/${apartment.id}`}>Edit Apt</CardLink>
                             </CardBody>
                         </Card>
                     )

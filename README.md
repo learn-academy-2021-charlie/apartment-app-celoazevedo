@@ -280,7 +280,7 @@
     - 
 
 ## Delete Func
-    - branch:
+    - branch: delete
         - Add a delete request spec
         - Add a destroy controller method
 

@@ -90,6 +90,28 @@ RSpec.describe "Apartments", type: :request do
     end
   end
 
+
+  describe "DELETE /detroy" do
+    it "delete apartment" do
+
+      apartment_params = {
+        apartment:  {
+          street: 'Updated St.', city: 'Valenca', state: 'Fortaleza', manager: 'Ms. P', email: 'jah@email.com', price: '7000', bedrooms: 15, bathrooms: 2, pets: 'no, plz', user_id: user.id
+        }
+      }
+    
+
+    post '/apartments', params: apartment_params
+
+    apartment = Apartment.first
+    delete "/apartments/#{apartment.id}"
+
+    expect(response).to have_http_status(200)
+    apartments = Apartment.all
+    expect(apartments).to be_empty
+    end
+  end
+
 #  rspec spec/requests/apartments_spec.rb
 
 # Prefix Verb   URI Pattern                         Controller#Action
