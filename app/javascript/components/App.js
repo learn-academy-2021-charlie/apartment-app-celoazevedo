@@ -13,6 +13,7 @@ import ApartmentIndex from "./pages/ApartmentIndex"
 import ApartmentShow from "./pages/ApartmentShow"
 import ApartmentNew from "./pages/ApartmentNew"
 import ApartmentEdit from "./pages/ApartmentEdit"
+import ApartmentProtected from "./pages/ApartmentProtected"
 import NotFound from "./pages/NotFound"
 // import mockApts from "./mockApts"
 
@@ -114,18 +115,25 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
 
           <Route path="/apartmentIndex" render={ (props) => 
-            <ApartmentIndex apartments={ this.state.apartments } /> }  
+            <ApartmentIndex apartments={ this.state.apartments.reverse()} /> }  
           />
 
+          {logged_in && <Route path="/apartmentNew" render={(props) => 
+            <ApartmentNew current_user={current_user} apartmentCreate={this.apartmentCreate}/>}
+          />}
+          
           <Route path="/apartmentShow/:id" render={(props) => {
             let id = props.match.params.id
             let apartment = this.state.apartments.find(apartment =>apartment.id === +id)
             return<ApartmentShow current_user={current_user} apartment={ apartment } deleteApartment= {this.deleteApartment} /> }} 
           />
 
-          <Route path="/apartmentNew" render={(props) => 
-            <ApartmentNew apartmentCreate={this.apartmentCreate}/>}
-          />
+          
+          {logged_in &&<Route path="/apartmentProtected" render={(props) => {
+            let user_id = current_user.id
+            let apartments = this.state.apartments.filter(apartment => apartment.id === user_id)
+            return <ApartmentProtected user_id={user_id} apartments={apartments} />
+            }}/>}
 
           <Route path="/apartmentEdit/:id" render={(props) =>{
             let id = props.match.params.id

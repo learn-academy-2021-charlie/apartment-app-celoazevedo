@@ -24,6 +24,9 @@ class Header extends Component {
                             {logged_in && <a href="apartmentNew" className="nav-link">Add Apartment</a>}
                         </NavItem>
                         <NavItem className="nav-sign-link">
+                            {logged_in && <a href="apartmentProtected" className="nav-link">My Apartments</a>}
+                        </NavItem>
+                        <NavItem className="nav-sign-link">
                             {logged_in && <a href={sign_out_route} className="nav-link">Sign Out</a>}
                             {!logged_in && <a href={sign_in_route} className="nav-link">Sign In</a>}
                         </NavItem>

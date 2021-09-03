@@ -38,7 +38,6 @@ RSpec.describe "Apartments", type: :request do
     end
   end
 
-  #  NEED TO FIX TEST FOR POST endpoint -- Post crud action working in app.
   describe "POST /create" do
     it "creates a new apartment" do
       apartment_params = {
