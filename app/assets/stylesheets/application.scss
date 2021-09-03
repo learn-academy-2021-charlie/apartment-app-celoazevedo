@@ -19,5 +19,11 @@
  .cards-container{
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center; 
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

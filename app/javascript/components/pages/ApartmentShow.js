@@ -37,7 +37,8 @@ class ApartmentShow extends Component {
                                 { `${apartment && apartment.bedrooms} bedrooms and ${apartment && apartment.bathrooms} baths. Monthly Rent: ${apartment && apartment.price}` }
                     </CardSubtitle>
                     <CardBody>
-                        <CardText>{ `If interested please contact ${apartment && apartment.manager} at ${apartment && apartment.email}` }</CardText>
+                        <CardText>{ `Contact ${apartment && apartment.manager} at ${apartment && apartment.email}` }</CardText>
+                        <CardText>{ ` ${apartment && apartment.pets} Pets`}</CardText>
                         {/* <CardLink href="#">See Apt Details</CardLink> */}
                         <NavLink to="/apartmentIndex" >
                             <Button onClick={ this.handleSubmit }>
