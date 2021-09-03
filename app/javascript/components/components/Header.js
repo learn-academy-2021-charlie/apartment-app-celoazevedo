@@ -11,11 +11,14 @@ class Header extends Component {
 
         return (
             <>
-                <Navbar className="nav-bar" color="light" light expand="md">
-                    <NavbarBrand href="/apartmentIndex">The Apartment App</NavbarBrand>
+                <Navbar className="nav-bar" color="dark" light expand="md">
+                    <NavbarBrand className="mr-auto" href="/">The Apartment App</NavbarBrand>
                     <Nav>
                         <NavItem>
                             <a className="nav-link" href="/">Home</a>
+                        </NavItem>
+                        <NavItem>
+                            {logged_in && <a href="apartmentIndex" className="nav-link">See Apartments</a>}
                         </NavItem>
                         <NavItem className="nav-sign-link">
                             {logged_in && <a href="apartmentNew" className="nav-link">Add Apartment</a>}

@@ -13,6 +13,7 @@ import ApartmentIndex from "./pages/ApartmentIndex"
 import ApartmentShow from "./pages/ApartmentShow"
 import ApartmentNew from "./pages/ApartmentNew"
 import ApartmentEdit from "./pages/ApartmentEdit"
+import NotFound from "./pages/NotFound"
 // import mockApts from "./mockApts"
 
 class App extends Component {
@@ -76,7 +77,7 @@ class App extends Component {
     .catch(errors => console.log("Apartment update errors:", errors))
   }
 
-  deleteTurtle = (id) => {
+  deleteApartment = (id) => {
     fetch(`http://localhost:3000/apartments/${id}`, {
       headers: {
         "Content-Type": "application/json"
@@ -119,7 +120,7 @@ class App extends Component {
           <Route path="/apartmentShow/:id" render={(props) => {
             let id = props.match.params.id
             let apartment = this.state.apartments.find(apartment =>apartment.id === +id)
-            return <ApartmentShow apartment={ apartment }/> }} />
+            return <ApartmentShow apartment={ apartment } deleteApartment= {this.deleteApartment} /> }} />
 
           <Route path="/apartmentNew" render={(props) => <ApartmentNew apartmentCreate={this.apartmentCreate}/>}
           />
@@ -130,7 +131,7 @@ class App extends Component {
             return<ApartmentEdit apartmentUpdate={this.apartmentUpdate} apartment={apartment} />
           }}
           />     
-
+          <Route component={NotFound} />
         </Switch>
       </Router>
     )
