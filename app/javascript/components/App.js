@@ -113,22 +113,27 @@ class App extends Component {
 
           <Route exact path="/" component={Home}/>
 
-          <Route path="/apartmentIndex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> }  />
+          <Route path="/apartmentIndex" render={ (props) => 
+            <ApartmentIndex apartments={ this.state.apartments } /> }  
+          />
 
-          {/* need to add the delete functionality to the show page. Logic already implemented */}
-          {/* alos some type of condition that will only display the apartments that belongs to the current user. has the foreign key. */}
           <Route path="/apartmentShow/:id" render={(props) => {
             let id = props.match.params.id
             let apartment = this.state.apartments.find(apartment =>apartment.id === +id)
-            return <ApartmentShow apartment={ apartment } deleteApartment= {this.deleteApartment} /> }} />
+            return<ApartmentShow current_user={current_user} apartment={ apartment } deleteApartment= {this.deleteApartment} /> }} 
+          />
 
-          <Route path="/apartmentNew" render={(props) => <ApartmentNew apartmentCreate={this.apartmentCreate}/>}
+          <Route path="/apartmentNew" render={(props) => 
+            <ApartmentNew apartmentCreate={this.apartmentCreate}/>}
           />
 
           <Route path="/apartmentEdit/:id" render={(props) =>{
             let id = props.match.params.id
             let apartment = this.state.apartments.find(apartment => apartment.id === +id)
-            return<ApartmentEdit apartmentUpdate={this.apartmentUpdate} apartment={apartment} />
+            return<ApartmentEdit 
+                      apartmentUpdate={this.apartmentUpdate} 
+                      apartment={apartment}  
+                  />
           }}
           />     
           <Route component={NotFound} />
